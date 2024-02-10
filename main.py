@@ -16,3 +16,10 @@ def miss_empty_dict():
 			continue
 		data_without_empty.append(i)
 	return data_without_empty
+
+def get_executed():
+	'''
+	получает список всех EXECUTED операций
+	'''
+	executed_operations = [i for i in miss_empty_dict() if i and i['state'] == 'EXECUTED']
+	return executed_operations
