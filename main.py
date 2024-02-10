@@ -40,3 +40,22 @@ def sorted_operations():
 	'''
 	operations_list = sorted(get_executed(), key=get_data_for_sort, reverse=True)
 	return operations_list
+
+
+def five_last_operations(data):
+	count = 0
+	for i in sorted_operations():
+		if not i.get('from'):
+			continue
+		elif count == 5:
+			break
+		count += 1
+		print(f"{i['date'][:10].replace('-', '.')} {i['description']}")
+		print(
+			f"{i['from'].split()[0]} {i['from'].split()[1][:4]} {i['from'].split()[1][4:6]}** **** {i['from'].split()[-1][8:12]} -> Счет **{i['to'][-4:]}")
+		print(f"{i['operationAmount']['amount']} {i['operationAmount']['currency']['name']}")
+		print()
+
+
+if __name__ == "__main__":
+	five_last_operations(data)
